@@ -8,6 +8,7 @@ import com.example.ffrestaurant.model.entities.Order;
 import com.example.ffrestaurant.model.entities.Product;
 import com.example.ffrestaurant.model.entities.ProductCategory;
 import com.example.ffrestaurant.view.providers.Routing;
+import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -72,18 +73,20 @@ public class AdminView extends AppLayout {
                content.add(notification);
             }
             productCategoryGrid.setItems(productCategoryService.all());
+            productCategoryGrid.addContextMenu();
             content.removeAll();
-            content.add(productCategoryGrid);
+            content.addAndExpand(productCategoryGrid);
             content.add(addCategory);
         });
         addCategory.add(addTextField);
         addCategory.add(addButton);
+        addCategory.setMaxWidth(5.5f, Unit.CM);
         final Button openCategories = new Button("Categories");
         openCategories.addClickListener(e -> {
             productCategoryGrid.setItems(productCategoryService.all());
             content.removeAll();
-            content.add(productCategoryGrid);
             content.add(addCategory);
+            content.add(productCategoryGrid);
         });
         addToDrawer(openCategories);
     }
