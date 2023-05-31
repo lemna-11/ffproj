@@ -21,7 +21,7 @@ public class NavigationBar {
         final Button b2 = new Button("Admin");
         b2.addClickListener(e -> b2.getUI().ifPresent(ui -> ui.navigate("/admin")));
         sus.add(b2);
-        return Collections.unmodifiableList(sus.stream().filter(e -> !e.getText().equalsIgnoreCase(toFilter)).collect(Collectors.toList()));
+        return sus.stream().filter(e -> !e.getText().equalsIgnoreCase(toFilter)).collect(Collectors.toList());
     }
 
     @Contract(pure = true)
