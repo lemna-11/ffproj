@@ -7,12 +7,11 @@ import com.example.ffrestaurant.flow.services.ProductService;
 import com.example.ffrestaurant.model.entities.Order;
 import com.example.ffrestaurant.model.entities.Product;
 import com.example.ffrestaurant.model.entities.ProductCategory;
-import com.example.ffrestaurant.view.providers.Routing;
+import com.example.ffrestaurant.view.providers.NavigationBar;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -23,13 +22,8 @@ import com.vaadin.flow.router.Route;
 @Route("/admin")
 public class AdminView extends AppLayout {
     public AdminView(OrderService orderService, ProductService productService, ProductCategoryService productCategoryService){
-        H1 title = new H1("Admin:");
-        title.getStyle()
-                .set("font-size", "var(--lumo-font-size-l)")
-                .set("margin", "var(--lumo-space-m)");
-        addToNavbar(title);
-
-        Routing.Routes("admin").forEach(this::addToNavbar);
+        addToNavbar(NavigationBar.title("Admin"));
+        NavigationBar.Routes("admin").forEach(this::addToNavbar);
 
         HorizontalLayout content = new HorizontalLayout();
         setContent(content);
