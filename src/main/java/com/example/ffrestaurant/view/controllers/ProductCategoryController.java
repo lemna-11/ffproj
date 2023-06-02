@@ -25,16 +25,35 @@ public class ProductCategoryController {
 
     @PostMapping("/update")
     public Long update(@RequestParam("id") Long id, @RequestParam("name") String categoryName){
-        return -1L;
+        Long newid;
+        try{
+            newid = productCategoryService.update(id, categoryName);
+
+        } catch (Exception e){
+            throw e;
+        }
+        return newid;
     }
 
     @GetMapping("/read")
     public ProductCategory read(@RequestParam("id") Long id){
-        return new ProductCategory();
+        ProductCategory read;
+        try{
+            read = productCategoryService.read(id);
+        } catch (Exception e){
+            throw e;
+        }
+        return read;
     }
 
     @DeleteMapping("/delete")
     public Long delete(@RequestParam("id") Long id){
-        return -1L;
+        long deleteid;
+        try{
+            deleteid = productCategoryService.delete(id);
+        } catch (Exception e){
+            throw e;
+        }
+        return id;
     }
 }
