@@ -1,12 +1,10 @@
 package com.example.ffrestaurant.view.controllers;
 
 import com.example.ffrestaurant.flow.services.OrderService;
+import com.example.ffrestaurant.model.entities.Order;
 import com.example.ffrestaurant.model.entities.OrderStatus;
 import com.example.ffrestaurant.model.entities.Product;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +18,22 @@ public class OrderController {
     }
 
     @PostMapping("/create")
-    public Long create(@RequestParam("products")List<Product> products, OrderStatus status){
-        //TODO:
+    public Long create(@RequestParam("products") List<Product> products, @RequestParam("status") OrderStatus status){
+        return -1L;
+    }
+
+    @PostMapping("/update")
+    public Long update(@RequestParam("id") Long id, @RequestParam("products") List<Product> products, @RequestParam("status") OrderStatus status){
+        return -1L;
+    }
+
+    @GetMapping("/read")
+    public Order read(@RequestParam("id") Long id){
+        return new Order();
+    }
+
+    @DeleteMapping("/delete")
+    public Long delete(@RequestParam("id") Long id){
         return -1L;
     }
 }
