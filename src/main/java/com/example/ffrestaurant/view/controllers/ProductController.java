@@ -2,6 +2,7 @@ package com.example.ffrestaurant.view.controllers;
 
 import com.example.ffrestaurant.flow.services.ProductService;
 import com.example.ffrestaurant.model.entities.Order;
+import com.example.ffrestaurant.model.entities.Product;
 import com.example.ffrestaurant.model.entities.ProductCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +29,8 @@ public class ProductController {
     }
 
     @GetMapping("/read")
-    public Order read(@RequestParam("id") Long id){
-        return new Order();
+    public Product read(@RequestParam("id") Long id){
+        return new Product();
     }
 
     @DeleteMapping("/delete")

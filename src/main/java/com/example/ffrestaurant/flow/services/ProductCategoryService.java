@@ -26,4 +26,11 @@ public class ProductCategoryService {
         }
         pcr.save(CategoryMapper.toEntity(value));
     }
+
+    public Long create(String categoryName) {
+        ProductCategory newp = new ProductCategory();
+        newp.setCategoryName(categoryName);
+        newp = pcr.save(newp);
+        return newp.getId();
+    }
 }
