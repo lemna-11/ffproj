@@ -1,4 +1,4 @@
-package com.example.ffrestaurant.view.endpoints;
+package com.example.ffrestaurant.view.vaadinViews;
 
 import com.example.ffrestaurant.view.providers.NavigationBar;
 import com.vaadin.flow.component.applayout.AppLayout;

@@ -6,7 +6,6 @@ import lombok.experimental.UtilityClass;
 import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +25,7 @@ public class NavigationBar {
 
     @Contract(pure = true)
     public H1 title(String title){
-        H1 t = new H1("Main:");
+        H1 t = new H1(title + ":");
         t.getStyle()
                 .set("font-size", "var(--lumo-font-size-l)")
                 .set("margin", "var(--lumo-space-m)");
