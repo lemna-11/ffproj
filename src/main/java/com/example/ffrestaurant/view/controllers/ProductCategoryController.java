@@ -47,7 +47,7 @@ public class ProductCategoryController {
     }
 
     @DeleteMapping("/delete")
-    public Long delete(@RequestParam("id") Long id){
+    public Long delete(@RequestParam("id") Long id){        //you say, its not okay to be gay, well i think youre just evil. youre just some racist, who cant tie my laces, your point of view is medival!
         long deleteid;
         try{
             deleteid = productCategoryService.delete(id);

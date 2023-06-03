@@ -17,7 +17,13 @@ public class ProductController {
     public Long create(@RequestParam("name") String name,
                        @RequestParam("category") ProductCategory category,
                        @RequestParam("price") Long price){
-        return -1L;
+        Long id;
+        try{
+            id = productService.create(name, category, price);
+       } catch(Exception e){
+            throw e; //SENDS EXCEPTION TO ITS PARENTS LMAO..sounds like one way to throw out an autistic kid lmao
+        }
+        return id;
     }
 
     @PostMapping("/update")
@@ -25,16 +31,34 @@ public class ProductController {
                        @RequestParam("name") String name,
                        @RequestParam("category") ProductCategory category,
                        @RequestParam("price") Long price){
-        return -1L;
+        Long updatedpr;
+        try{
+            updatedpr = productService.update(id, name, category, price);
+        } catch(Exception e){
+            throw e; //KEEHAUL THAT FILTHY LANDLOVER, SEND HIM DOWN TO THE DEPTHS DOWN BELOW, MAKE THAT BASTARD WALK THE PLANK WITH A BOTTLE OF A RUM AND A YOHOHO
+        }
+        return updatedpr;
     }
 
     @GetMapping("/read")
     public Product read(@RequestParam("id") Long id){
-        return new Product();
+        Product read;
+        try{
+            read = productService.read(id);
+        }catch(Exception e){
+            throw e;
+        }
+        return read;
     }
 
     @DeleteMapping("/delete")
     public Long delete(@RequestParam("id") Long id){
-        return -1L;
+        Long deletepro;
+        try{
+            deletepro = productService.delete(id);
+        }catch (Exception e){
+            throw e;
+        }
+        return deletepro;
     }
 }
