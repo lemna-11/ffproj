@@ -20,20 +20,14 @@ public class OrderService {
         return or.findAll();
     }
 
-    public Long create(List<Product> products, OrderStatus status) {
-        Order wolfenstein =  new Order();
-        wolfenstein.setProducts(products);
-        wolfenstein.setStatus(status);
-        wolfenstein = or.save(wolfenstein);
-        return wolfenstein.getId();     //MAKE THAT BASTARD WALK THE PLANK WITH A RUM AND A YOHOHO
+    public Long create(Order order) {
+        return or.save(order).getId();     //MAKE THAT BASTARD WALK THE PLANK WITH A RUM AND A YOHOHO
     }
 
-    public Long update(Long id, List<Product> products, OrderStatus status) {
-        Order warhammer = or.findById(id).orElseThrow();
-        warhammer.setProducts(products);
-        warhammer.setStatus(status);
-        or.save(warhammer);
-        return warhammer.getId();
+    public Long update(Order order) {
+        or.findById(order.getId()).orElseThrow();
+        order = or.save(order);
+        return order.getId();
     }
 
     public Order read(Long id) {

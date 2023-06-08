@@ -47,13 +47,11 @@ public class ProductCategoryController {
     }
 
     @DeleteMapping("/delete")
-    public Long delete(@RequestParam("id") Long id){        //you say, its not okay to be gay, well i think youre just evil. youre just some racist, who cant tie my laces, your point of view is medival!
-        long deleteid;
+    public void delete(@RequestParam("id") Long id){        //you say, its not okay to be gay, well i think youre just evil. youre just some racist, who cant tie my laces, your point of view is medival!
         try{
-            deleteid = productCategoryService.delete(id);
+            productCategoryService.delete(id);
         } catch (Exception e){
             throw e;
         }
-        return id;
     }
 }

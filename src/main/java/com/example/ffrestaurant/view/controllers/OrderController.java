@@ -18,10 +18,10 @@ public class OrderController {
     }
 
     @PostMapping("/create")
-    public Long create(@RequestParam("products") List<Product> products, @RequestParam("status") OrderStatus status){
+    public Long create(@RequestBody Order order){
         Long id;
         try{
-            id =  orderService.create(products, status);
+            id =  orderService.create(order);
         } catch (Exception e){
             throw e;
         }
@@ -29,10 +29,10 @@ public class OrderController {
     }
 
     @PostMapping("/update")
-    public Long update(@RequestParam("id") Long id, @RequestParam("products") List<Product> products, @RequestParam("status") OrderStatus status){
+    public Long update(@RequestBody Order order){
         Long updatedid;
         try{
-            updatedid = orderService.update(id, products, status); //so product, status, and id? how lovely trinity isnt it?
+            updatedid = orderService.update(order); //so product, status, and id? how lovely trinity isnt it?
             //oh lovely...so just return?thats...that looks too simple to be the case ngl
 
         } catch (Exception e){
@@ -53,14 +53,12 @@ public class OrderController {
     }
 
     @DeleteMapping("/delete")
-    public Long delete(@RequestParam("id") Long id){
+    public void delete(@RequestParam("id") Long id){
         //thats one way to go down
-        Long lastorder;
         try{
-            lastorder = orderService.delete(id);
+            orderService.delete(id);
         }catch (Exception e){
             throw e; //i try to have a laugh, i didnt win the game of life, but id give myself a pass
         }
-        return lastorder;
     }
 }
