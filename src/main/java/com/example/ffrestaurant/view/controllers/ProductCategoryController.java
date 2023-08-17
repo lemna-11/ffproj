@@ -6,6 +6,8 @@ import com.example.ffrestaurant.model.entities.ProductCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/productcategory")
 public class ProductCategoryController {
@@ -45,6 +47,23 @@ public class ProductCategoryController {
         }
         return read;
     }
+    @GetMapping("/readCategoryName")
+    public ProductCategory readname(@RequestParam("name") String name) {
+        ProductCategory readName;
+        try {
+            readName = productCategoryService.findByCategoryName(name);
+        } catch (Exception e) {
+            throw e;
+        }
+        return readName;
+    }
+
+    @GetMapping("/readAll")
+    public List<ProductCategory> readAll(){
+        return productCategoryService.all();
+    }
+
+
 
     @DeleteMapping("/delete")
     public void delete(@RequestParam("id") Long id){        //you say, its not okay to be gay, well i think youre just evil. youre just some racist, who cant tie my laces, your point of view is medival!

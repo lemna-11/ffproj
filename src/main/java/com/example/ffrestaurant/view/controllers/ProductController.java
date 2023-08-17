@@ -35,7 +35,7 @@ public class ProductController {
         try{
             updatedpr = productService.update(id, name, category, price);
         } catch(Exception e){
-            throw e; //KEEHAUL THAT FILTHY LANDLOVER, SEND HIM DOWN TO THE DEPTHS DOWN BELOW, MAKE THAT BASTARD WALK THE PLANK WITH A BOTTLE OF A RUM AND A YOHOHO
+            throw e; //KEELHAUL THAT FILTHY LANDLOVER, SEND HIM DOWN TO THE DEPTHS DOWN BELOW, MAKE THAT BASTARD WALK THE PLANK WITH A BOTTLE OF A RUM AND A YOHOHO
         }
         return updatedpr;
     }

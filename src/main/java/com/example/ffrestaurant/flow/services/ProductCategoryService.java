@@ -47,8 +47,16 @@ public class ProductCategoryService {
         return readc;
     }
 
+
     public Long delete(Long id) {
         pcr.deleteById(id);
         return id; //clever shit here, remember it
     }
+
+    public ProductCategory findByCategoryName(String name) {
+        ProductCategory readN  = pcr.findByCategoryName(name).orElseThrow();
+        return readN;
+    }
+
+
 }
