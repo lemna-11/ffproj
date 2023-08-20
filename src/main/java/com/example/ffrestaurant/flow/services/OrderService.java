@@ -3,17 +3,22 @@ package com.example.ffrestaurant.flow.services;
 import com.example.ffrestaurant.model.entities.Order;
 import com.example.ffrestaurant.model.entities.OrderStatus;
 import com.example.ffrestaurant.model.entities.Product;
+import com.example.ffrestaurant.model.entities.ProductCategory;
 import com.example.ffrestaurant.model.repositories.OrderRepository;
+import com.example.ffrestaurant.model.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
     private final OrderRepository or;
+    private final ProductRepository pr;
 
-    public OrderService(OrderRepository or){
+    public OrderService(OrderRepository or, ProductRepository pr){
         this.or = or;
+        this.pr = pr;
     }
 
     public List<Order> all() {

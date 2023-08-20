@@ -19,12 +19,17 @@ public class ProductService {
         return pr.findAll();
     }                           //slug ten drinks i wont get pickled. i gotta hand it to you, youve played by all the same rules, it takes the truth to fool me, and now youve made me angry
 
+    public List<Product> allByCategory(ProductCategory category){
+        return pr.findAllByCategory(category);
+    }
+
     public Long create(String name, ProductCategory category, Long price) {
         Product thing = new Product();
         thing.setName(name);
         thing.setCategory(category);
         thing.setPriceInCents(price);
-    return thing.getId();
+        pr.save(thing);
+        return thing.getId();
     }
 
     public Long update(Long id, String name, ProductCategory category, Long price) {

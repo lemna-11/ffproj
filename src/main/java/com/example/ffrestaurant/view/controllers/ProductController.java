@@ -7,6 +7,8 @@ import com.example.ffrestaurant.model.entities.ProductCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -45,6 +47,17 @@ public class ProductController {
         Product read;
         try{
             read = productService.read(id);
+        }catch(Exception e){
+            throw e;
+        }
+        return read;
+    }
+
+    @GetMapping("/readByCategory")
+    public List<Product> read(@RequestParam("category") ProductCategory category){
+        List<Product> read;
+        try{
+            read = productService.allByCategory(category);
         }catch(Exception e){
             throw e;
         }
