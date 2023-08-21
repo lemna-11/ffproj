@@ -28,7 +28,7 @@ public class ProductService {
         thing.setName(name);
         thing.setCategory(category);
         thing.setPriceInCents(price);
-        pr.save(thing);
+        thing = pr.save(thing);
         return thing.getId();
     }
 
