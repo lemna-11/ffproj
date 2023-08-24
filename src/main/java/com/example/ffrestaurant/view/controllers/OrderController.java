@@ -2,8 +2,6 @@ package com.example.ffrestaurant.view.controllers;
 
 import com.example.ffrestaurant.flow.services.OrderService;
 import com.example.ffrestaurant.model.entities.Order;
-import com.example.ffrestaurant.model.entities.OrderStatus;
-import com.example.ffrestaurant.model.entities.Product;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,6 +49,10 @@ public class OrderController {
         }
         return read;
     }
+    @GetMapping("/readAllOrders")
+    public List<Order> readAllOrders(){
+            return OrderService.all();
+        }
 
     @DeleteMapping("/delete")
     public void delete(@RequestParam("id") Long id){
