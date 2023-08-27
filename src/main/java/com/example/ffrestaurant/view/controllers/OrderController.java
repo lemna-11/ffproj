@@ -11,55 +11,57 @@ import java.util.List;
 public class OrderController {
     private final OrderService orderService;
 
-    public OrderController(OrderService orderService){
+    public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 
     @PostMapping("/create")
-    public Long create(@RequestBody Order order){
+    public Long create(@RequestBody Order order) {
         Long id;
-        try{
-            id =  orderService.create(order);
-        } catch (Exception e){
+        try {
+            id = orderService.create(order);
+        } catch (Exception e) {
             throw e;
         }
         return id;
     }
 
     @PostMapping("/update")
-    public Long update(@RequestBody Order order){
+    public Long update(@RequestBody Order order) {
         Long updatedid;
-        try{
+        try {
             updatedid = orderService.update(order); //so product, status, and id? how lovely trinity isnt it?
             //oh lovely...so just return?thats...that looks too simple to be the case ngl
 
-        } catch (Exception e){
+        } catch (Exception e) {
             throw e;
         }
         return updatedid; //YOU CANT KILL CLOWN
     }
 
     @GetMapping("/read")
-    public Order read(@RequestParam("id") Long id){
+    public Order read(@RequestParam("id") Long id) {
         Order read;
-        try{
+        try {
             read = orderService.read(id);
-        }catch(Exception e){
+        } catch (Exception e) {
             throw e;
         }
         return read;
     }
+
     @GetMapping("/readAllOrders")
-    public List<Order> readAllOrders(){
-            return OrderService.all();
-        }
+    public List<Order> readAllOrders() {
+        List<Order> orders = orderService.all();
+        return orders;
+    }
 
     @DeleteMapping("/delete")
-    public void delete(@RequestParam("id") Long id){
+    public void delete(@RequestParam("id") Long id) {
         //thats one way to go down
-        try{
+        try {
             orderService.delete(id);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw e; //i try to have a laugh, i didnt win the game of life, but id give myself a pass
         }
     }
